@@ -1,27 +1,22 @@
 <template>
-       <lightning-dual-listbox name="profiles"
+    <div>
+        <lightning-dual-listbox name="profiles"
         label="Select Profiles"
         source-label="Available"
         selected-label="Selected"
         field-level-help="Select profiles enabled for user deactivation"
-        options={profiles}
+        options={customMetaProfiles}
         value={selectedValues}
         onchange={handleProfileSelection}></lightning-dual-listbox>
-    <div class="slds-box">
-    <p>Selected values are: {selectedValues}</p>
-    </div>
 
-    <lightning-dual-listbox
-    id="selectOptions"
-    name="Select Options"
-    label="Select Options"
-    source-label="Available Options"
-    selected-label="Selected Options"
-    options={listOptions}
-    value={defaultOptions}
-    required-options={requiredOptions}
-    onchange={handleChange}
->
-</lightning-dual-listbox>
-    
+        <lightning-slider label="Deactivation Threshold In Days" value={deactivationDays} onchange={handleDeactivationDays} size="x-small"></lightning-slider>
+        
+        <lightning-slider label="Warning Threshold In Days" value={warningDays} onchange={handleWarningDays} size="x-small"></lightning-slider>
+
+        <div class="slds-clearfix">
+            <div class="slds-m-top_x-large">
+                <lightning-button variant="brand" label="Save" title="Save records" icon-name="utility:save" class="slds-m-left_x-medium" onclick={saveSelection}></lightning-button>
+            </div>
+        </div>
+    </div>
 </template>
